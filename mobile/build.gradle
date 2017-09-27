@@ -23,6 +23,9 @@ android {
 
 dependencies {
     wearApp project(':wear')
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion"
+
     implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
     implementation "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
     implementation "com.google.android.gms:play-services-wearable:$googlePlayServicesVersion"
