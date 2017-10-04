@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.wear.widget.drawer.WearableDrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.wear.widget.drawer.WearableDrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/draweLayout"
@@ -22,16 +21,24 @@
         android:id="@+id/topNavigationDrawer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:navigationStyle="singlePage"
-         />
+        app:navigationStyle="singlePage" />
 
     <android.support.wear.widget.drawer.WearableActionDrawerView
         android:id="@+id/bottomActionDrawer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/grey"
-        app:showOverflowInPeek="true"
+        app:actionMenu="@menu/action_drawer_menu"
         app:drawerTitle="Menu"
-        app:actionMenu="@menu/action_drawer_menu" />
+        app:enableAutoPeek="false"
+        app:peekView="@+id/action_peek_view"
+        app:showOverflowInPeek="true">
+
+        <!-- For disable peek -->
+        <View
+            android:id="@id/action_peek_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+    </android.support.wear.widget.drawer.WearableActionDrawerView>
 
 </android.support.wear.widget.drawer.WearableDrawerLayout>

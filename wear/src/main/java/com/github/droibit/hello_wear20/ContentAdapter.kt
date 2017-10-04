@@ -9,7 +9,8 @@ import kotlinx.android.synthetic.main.list_item.view.*
 
 class ContentAdapter(
         context: Context,
-        private val messages: List<String>) : RecyclerView.Adapter<ContentAdapter.ViewHolder>() {
+        private val messages: List<String>,
+        private val clickListener: (Int) -> Unit) : RecyclerView.Adapter<ContentAdapter.ViewHolder>() {
 
     private val inflater = LayoutInflater.from(context)
 
@@ -28,6 +29,8 @@ class ContentAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = inflater.inflate(R.layout.list_item, parent, false)
-        return ViewHolder(itemView)
+        return ViewHolder(itemView).apply {
+            itemView.setOnClickListener { clickListener(adapterPosition) }
+        }
     }
 }
