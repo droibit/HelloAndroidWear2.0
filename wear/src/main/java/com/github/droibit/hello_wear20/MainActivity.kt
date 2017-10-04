@@ -15,6 +15,21 @@ class MainActivity : WearableActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        list.also {
+            it.adapter = ContentAdapter(this, messages = listOf(
+                    "Android ",
+                    "Android Android",
+                    "Android Android Android ",
+                    "Android Android Android Android Android ",
+                    "Android Android Android Android Android Android Android Android ",
+                    "Android Android Android Android Android Android Android Android Android Android ",
+                    "d",
+                    "d",
+                    "dd",
+                    "d"
+            ))
+        }
+
         topNavigationDrawer.also {
             it.setAdapter(NavigationAdapter(this))
             it.addOnItemSelectedListener(this)
