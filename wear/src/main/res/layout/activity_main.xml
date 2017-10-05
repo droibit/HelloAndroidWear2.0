@@ -10,17 +10,26 @@
     tools:context="com.github.droibit.hello_wear20.MainActivity"
     tools:deviceIds="wear">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/list"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <android.support.wear.widget.drawer.WearableNavigationDrawerView
         android:id="@+id/topNavigationDrawer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:enableAutoPeek="false"
         app:navigationStyle="singlePage" />
 
     <android.support.wear.widget.drawer.WearableActionDrawerView
