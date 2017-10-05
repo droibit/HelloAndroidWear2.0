@@ -77,10 +77,13 @@ class MainActivity : WearableActivity(),
     // MenuItem.OnMenuItemClickListener
 
     override fun onMenuItemClick(item: MenuItem): Boolean {
-        Toast.makeText(this, item.title, Toast.LENGTH_SHORT).show()
-
-        val intent = PhotoActivity.createIntent(this)
-        startActivity(intent)
+        when (item.itemId) {
+            R.id.action_photo -> {
+                val intent = PhotoActivity.createIntent(this)
+                startActivity(intent)
+            }
+            else -> Toast.makeText(this, item.title, Toast.LENGTH_SHORT).show()
+        }
 
         bottomActionDrawer.controller.closeDrawer()
         return true
