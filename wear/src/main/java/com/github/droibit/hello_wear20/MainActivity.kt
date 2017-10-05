@@ -43,11 +43,10 @@ class MainActivity : WearableActivity(),
                     "d",
                     "dd",
                     "d")) {
-                Log.d(TAG, "click=$it")
                 bottomActionDrawer.controller.openDrawer()
+                Log.d(TAG, "click=$it")
             }
         }
-
     }
 
     // WearableNavigationDrawerView.OnItemSelectedListener
@@ -60,6 +59,10 @@ class MainActivity : WearableActivity(),
 
     override fun onMenuItemClick(item: MenuItem): Boolean {
         Toast.makeText(this, item.title, Toast.LENGTH_SHORT).show()
+
+        val intent = PhotoActivity.createIntent(this)
+        startActivity(intent)
+
         bottomActionDrawer.controller.closeDrawer()
         return true
     }
