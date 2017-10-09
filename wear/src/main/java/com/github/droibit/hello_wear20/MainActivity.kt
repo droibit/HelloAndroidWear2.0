@@ -3,13 +3,13 @@ package com.github.droibit.hello_wear20
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.content.ContextCompat
-import android.support.v4.widget.CircularProgressDrawable
 import android.support.v7.widget.LinearLayoutManager
 import android.support.wear.widget.drawer.WearableNavigationDrawerView
 import android.support.wearable.activity.WearableActivity
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
+import com.github.droibit.hello_wear20.NavigationAdapter.Companion.navigationItems
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit
 
@@ -40,7 +40,7 @@ class MainActivity : WearableActivity(),
 
         list.also {
             it.adapter = ContentAdapter(this, messages = listOf(
-                    "Android ",
+                    "Android",
                     "Android Android",
                     "Android Android Android ",
                     "Android Android Android Android Android ",
@@ -71,7 +71,11 @@ class MainActivity : WearableActivity(),
     // WearableNavigationDrawerView.OnItemSelectedListener
 
     override fun onItemSelected(pos: Int) {
-        Toast.makeText(this, NavigationAdapter.navigationItems[pos].text, Toast.LENGTH_SHORT).show()
+        if (navigationItems[pos].text == "Create") {
+            val intent = InputChooserActivity.createIntent(this)
+            startActivity(intent)
+        }
+        Toast.makeText(this, navigationItems[pos].text, Toast.LENGTH_SHORT).show()
     }
 
     // MenuItem.OnMenuItemClickListener
@@ -84,7 +88,6 @@ class MainActivity : WearableActivity(),
             }
             else -> Toast.makeText(this, item.title, Toast.LENGTH_SHORT).show()
         }
-
         bottomActionDrawer.controller.closeDrawer()
         return true
     }
