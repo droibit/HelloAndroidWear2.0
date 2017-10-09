@@ -37,6 +37,9 @@
         <activity
             android:name=".InputChooserActivity"
             android:exported="false" />
+        <activity
+            android:name=".InputKeyboardActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
