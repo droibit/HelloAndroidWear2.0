@@ -86,6 +86,10 @@ class MainActivity : WearableActivity(),
                 val intent = PhotoActivity.createIntent(this)
                 startActivity(intent)
             }
+            R.id.archive -> {
+                val intent = StackActivity.createIntent(this)
+                startActivity(intent)
+            }
             else -> Toast.makeText(this, item.title, Toast.LENGTH_SHORT).show()
         }
         bottomActionDrawer.controller.closeDrawer()

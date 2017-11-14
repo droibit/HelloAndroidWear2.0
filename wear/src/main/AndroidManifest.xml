@@ -40,6 +40,9 @@
         <activity
             android:name=".InputKeyboardActivity"
             android:exported="false" />
+        <activity
+            android:name=".StackActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
