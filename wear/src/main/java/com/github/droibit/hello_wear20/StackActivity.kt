@@ -2,6 +2,7 @@ package com.github.droibit.hello_wear20
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
@@ -30,6 +31,7 @@ class StackActivity : FragmentActivity() {
                             .commit()
                 }
             }
+            requireNotNull(view).setBackgroundColor(Color.DKGRAY)
         }
     }
 
@@ -40,6 +42,7 @@ class StackActivity : FragmentActivity() {
                 it.addView(inflatedView)
                 it.addCallback(object : SwipeDismissFrameLayout.Callback() {
                     override fun onDismissed(layout: SwipeDismissFrameLayout) {
+                        layout.visibility = View.INVISIBLE
                         fragmentManager.popBackStack()
                     }
                 })
@@ -58,6 +61,7 @@ class StackActivity : FragmentActivity() {
                             .commit()
                 }
             }
+            requireNotNull(view).setBackgroundColor(Color.BLACK)
         }
     }
 
