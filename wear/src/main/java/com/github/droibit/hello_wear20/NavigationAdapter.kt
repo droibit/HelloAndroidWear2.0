@@ -13,10 +13,10 @@ class NavigationAdapter(private val context: Context) :
     companion object {
 
         val navigationItems = listOf(
-                NavigationItem(text = "Android", iconRes = R.drawable.ic_android),
+                NavigationItem(text = "Input", iconRes = R.drawable.ic_keyboard),
+                NavigationItem(text = "Stack", iconRes = R.drawable.ic_android),
                 NavigationItem(text = "Archive", iconRes = R.drawable.ic_archive),
                 NavigationItem(text = "Build", iconRes = R.drawable.ic_build),
-                NavigationItem(text = "Create", iconRes = R.drawable.ic_create),
                 NavigationItem(text = "AudioTrack", iconRes = R.drawable.ic_audiotrack)
         )
     }

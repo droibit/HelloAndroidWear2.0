@@ -71,9 +71,15 @@ class MainActivity : WearableActivity(),
     // WearableNavigationDrawerView.OnItemSelectedListener
 
     override fun onItemSelected(pos: Int) {
-        if (navigationItems[pos].text == "Create") {
-            val intent = InputChooserActivity.createIntent(this)
-            startActivity(intent)
+        when (navigationItems[pos].text) {
+            "Input" -> {
+                val intent = InputChooserActivity.createIntent(this)
+                startActivity(intent)
+            }
+            "Stack" -> {
+                val intent = StackActivity.createIntent(this)
+                startActivity(intent)
+            }
         }
         Toast.makeText(this, navigationItems[pos].text, Toast.LENGTH_SHORT).show()
     }
@@ -84,10 +90,6 @@ class MainActivity : WearableActivity(),
         when (item.itemId) {
             R.id.action_photo -> {
                 val intent = PhotoActivity.createIntent(this)
-                startActivity(intent)
-            }
-            R.id.archive -> {
-                val intent = StackActivity.createIntent(this)
                 startActivity(intent)
             }
             else -> Toast.makeText(this, item.title, Toast.LENGTH_SHORT).show()

@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_photo"
         android:icon="@drawable/ic_photo"
         android:title="Photo" />
-
-    <item
-        android:id="@+id/archive"
-        android:icon="@drawable/ic_archive"
-        android:title="Archive" />
-
-    <item
-        android:id="@+id/build"
-        android:icon="@drawable/ic_build"
-        android:title="Build" />
 
 </menu>
