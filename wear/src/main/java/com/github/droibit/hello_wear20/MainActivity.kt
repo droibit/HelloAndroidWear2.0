@@ -6,6 +6,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.wear.widget.drawer.WearableNavigationDrawerView
 import android.support.wearable.activity.WearableActivity
+import android.support.wearable.view.AcceptDenyDialogFragment
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
@@ -79,6 +80,16 @@ class MainActivity : WearableActivity(),
             "Stack" -> {
                 val intent = StackActivity.createIntent(this)
                 startActivity(intent)
+            }
+            "Dialog" -> {
+                val dialogFragment = AcceptDenyDialogFragment.Builder()
+                        .setTitle("Title")
+                        .setMessage("Hello, world.")
+                        .setShowPositiveButton(true)
+                        .setShowNegativeButton(true)
+                        .build()
+                dialogFragment.show(fragmentManager, null)
+
             }
         }
         Toast.makeText(this, navigationItems[pos].text, Toast.LENGTH_SHORT).show()
