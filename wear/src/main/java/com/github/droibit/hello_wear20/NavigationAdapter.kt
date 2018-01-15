@@ -16,7 +16,7 @@ class NavigationAdapter(private val context: Context) :
                 NavigationItem(text = "Input", iconRes = R.drawable.ic_keyboard),
                 NavigationItem(text = "Stack", iconRes = R.drawable.ic_android),
                 NavigationItem(text = "Dialog", iconRes = R.drawable.ic_archive),
-                NavigationItem(text = "Build", iconRes = R.drawable.ic_build),
+                NavigationItem(text = "Settings", iconRes = R.drawable.ic_build),
                 NavigationItem(text = "AudioTrack", iconRes = R.drawable.ic_audiotrack)
         )
     }

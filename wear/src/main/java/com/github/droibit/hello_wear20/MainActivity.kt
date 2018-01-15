@@ -11,7 +11,10 @@ import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import com.github.droibit.hello_wear20.NavigationAdapter.Companion.navigationItems
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.bottomActionDrawer
+import kotlinx.android.synthetic.main.activity_main.list
+import kotlinx.android.synthetic.main.activity_main.swipeRefresh
+import kotlinx.android.synthetic.main.activity_main.topNavigationDrawer
 import java.util.concurrent.TimeUnit
 
 class MainActivity : WearableActivity(),
@@ -89,7 +92,8 @@ class MainActivity : WearableActivity(),
                         .setShowNegativeButton(true)
                         .build()
                 dialogFragment.show(fragmentManager, null)
-
+            }
+            "Settings" -> {
             }
         }
         Toast.makeText(this, navigationItems[pos].text, Toast.LENGTH_SHORT).show()
