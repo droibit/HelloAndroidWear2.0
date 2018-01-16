@@ -94,6 +94,8 @@ class MainActivity : WearableActivity(),
                 dialogFragment.show(fragmentManager, null)
             }
             "Settings" -> {
+                val intent = SettingsActivity.createIntent(this)
+                startActivity(intent)
             }
         }
         Toast.makeText(this, navigationItems[pos].text, Toast.LENGTH_SHORT).show()

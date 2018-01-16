@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="screen"
+    android:title="Settings">
+
+  <Preference
+      android:key="p1"
+      android:title="Preference 1"
+      android:summary="Summary"
+      android:icon="@android:drawable/ic_input_add" />
+
+  <Preference
+      android:title="Preference long long long long long long 2"
+      android:summary="Summary long long long long long long 2"
+      android:icon="@android:drawable/ic_input_delete" />
+
+  <Preference android:title="Preference 3" />
+
+  <PreferenceCategory
+      android:title="Preference category">
+
+    <SwitchPreference
+      android:title="Switch"
+      android:summary="Summary"
+      android:defaultValue="false" />
+
+  </PreferenceCategory>
+
+</PreferenceScreen>
