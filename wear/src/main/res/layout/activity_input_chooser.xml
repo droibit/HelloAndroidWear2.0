@@ -32,23 +32,25 @@
 
             <ImageButton
                 android:id="@+id/inputVoice"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:scaleType="fitCenter"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:scaleType="center"
                 android:src="@drawable/ic_keyboard_voice"
-                android:background="?android:attr/selectableItemBackground" />
+                android:foreground="?android:attr/actionBarItemBackground"
+                android:background="@drawable/background_circle" />
 
             <android.support.v4.widget.Space
-                android:layout_width="16dp"
+                android:layout_width="24dp"
                 android:layout_height="match_parent" />
 
             <ImageButton
                 android:id="@+id/inputKeyboard"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:scaleType="fitCenter"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:scaleType="center"
                 android:src="@drawable/ic_keyboard"
-                android:background="?android:attr/selectableItemBackground" />
+                android:foreground="?android:attr/actionBarItemBackground"
+                android:background="@drawable/background_circle"/>
 
         </LinearLayout>
 
