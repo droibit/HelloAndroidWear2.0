@@ -11,25 +11,28 @@ import android.view.View
 
 class SettingsActivity : WearablePreferenceActivity() {
 
-    class SettingsFragment : PreferenceFragment() {
+  class SettingsFragment : PreferenceFragment() {
 
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            addPreferencesFromResource(R.xml.settings)
-        }
-
-        override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-            super.onViewCreated(view, savedInstanceState)
-
-            PreferenceIconHelper.wrapAllIconsInGroup(findPreference("screen") as PreferenceGroup)
-        }
+    override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      addPreferencesFromResource(R.xml.settings)
     }
 
-    companion object {
+    override fun onViewCreated(
+      view: View?,
+      savedInstanceState: Bundle?
+    ) {
+      super.onViewCreated(view, savedInstanceState)
 
-        fun createIntent(context: Context): Intent {
-            return Intent(context, SettingsActivity::class.java)
-                    .putExtra(":android:show_fragment", SettingsFragment::class.java.name)
-        }
+      PreferenceIconHelper.wrapAllIconsInGroup(findPreference("screen") as PreferenceGroup)
     }
+  }
+
+  companion object {
+
+    fun createIntent(context: Context): Intent {
+      return Intent(context, SettingsActivity::class.java)
+          .putExtra(":android:show_fragment", SettingsFragment::class.java.name)
+    }
+  }
 }

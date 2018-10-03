@@ -18,100 +18,106 @@ import kotlinx.android.synthetic.main.activity_main.topNavigationDrawer
 import java.util.concurrent.TimeUnit
 
 class MainActivity : WearableActivity(),
-        MenuItem.OnMenuItemClickListener,
-        WearableNavigationDrawerView.OnItemSelectedListener {
+    MenuItem.OnMenuItemClickListener,
+    WearableNavigationDrawerView.OnItemSelectedListener {
 
-    companion object {
+  companion object {
 
-        private val TAG = MainActivity::class.java.simpleName
+    private val TAG = MainActivity::class.java.simpleName
+  }
+
+  private val refreshHandler = Handler()
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
+
+    topNavigationDrawer.also {
+      it.setAdapter(NavigationAdapter(this))
+      it.addOnItemSelectedListener(this)
+      it.controller.closeDrawer()
     }
 
-    private val refreshHandler = Handler()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        topNavigationDrawer.also {
-            it.setAdapter(NavigationAdapter(this))
-            it.addOnItemSelectedListener(this)
-            it.controller.closeDrawer()
-        }
-
-        bottomActionDrawer.also {
-            it.setOnMenuItemClickListener(this)
-        }
-
-        list.also {
-            it.adapter = ContentAdapter(this, messages = listOf(
-                    "Android",
-                    "Android Android",
-                    "Android Android Android ",
-                    "Android Android Android Android Android ",
-                    "Android Android Android Android Android Android Android Android ",
-                    "Android Android Android Android Android Android Android Android Android Android ",
-                    "d",
-                    "d",
-                    "dd",
-                    "d")) {
-                bottomActionDrawer.controller.openDrawer()
-                Log.d(TAG, "click=$it")
-            }
-
-            (it.layoutManager as LinearLayoutManager).stackFromEnd = true
-        }
-
-        swipeRefresh.also {
-            it.setOnRefreshListener {
-                refreshHandler.postDelayed({ swipeRefresh.isRefreshing = false },
-                        TimeUnit.SECONDS.toMillis(2))
-            }
-            it.setColorSchemeColors(
-                    ContextCompat.getColor(this, android.R.color.holo_blue_bright)
-            )
-        }
+    bottomActionDrawer.also {
+      it.setOnMenuItemClickListener(this)
     }
 
-    // WearableNavigationDrawerView.OnItemSelectedListener
+    list.also {
+      it.adapter = ContentAdapter(
+          this, messages = listOf(
+          "Android",
+          "Android Android",
+          "Android Android Android ",
+          "Android Android Android Android Android ",
+          "Android Android Android Android Android Android Android Android ",
+          "Android Android Android Android Android Android Android Android Android Android ",
+          "d",
+          "d",
+          "dd",
+          "d"
+      )
+      ) {
+        bottomActionDrawer.controller.openDrawer()
+        Log.d(TAG, "click=$it")
+      }
 
-    override fun onItemSelected(pos: Int) {
-        when (navigationItems[pos].text) {
-            "Input" -> {
-                val intent = InputChooserActivity.createIntent(this)
-                startActivity(intent)
-            }
-            "Stack" -> {
-                val intent = StackActivity.createIntent(this)
-                startActivity(intent)
-            }
-            "Dialog" -> {
-                val dialogFragment = AcceptDenyDialogFragment.Builder()
-                        .setTitle("Title")
-                        .setMessage("Hello, world.")
-                        .setShowPositiveButton(true)
-                        .setShowNegativeButton(true)
-                        .build()
-                dialogFragment.show(fragmentManager, null)
-            }
-            "Settings" -> {
-                val intent = SettingsActivity.createIntent(this)
-                startActivity(intent)
-            }
-        }
-        Toast.makeText(this, navigationItems[pos].text, Toast.LENGTH_SHORT).show()
+      (it.layoutManager as LinearLayoutManager).stackFromEnd = true
     }
 
-    // MenuItem.OnMenuItemClickListener
-
-    override fun onMenuItemClick(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.action_photo -> {
-                val intent = PhotoActivity.createIntent(this)
-                startActivity(intent)
-            }
-            else -> Toast.makeText(this, item.title, Toast.LENGTH_SHORT).show()
-        }
-        bottomActionDrawer.controller.closeDrawer()
-        return true
+    swipeRefresh.also {
+      it.setOnRefreshListener {
+        refreshHandler.postDelayed(
+            { swipeRefresh.isRefreshing = false },
+            TimeUnit.SECONDS.toMillis(2)
+        )
+      }
+      it.setColorSchemeColors(
+          ContextCompat.getColor(this, android.R.color.holo_blue_bright)
+      )
     }
+  }
+
+  // WearableNavigationDrawerView.OnItemSelectedListener
+
+  override fun onItemSelected(pos: Int) {
+    when (navigationItems[pos].text) {
+      "Input" -> {
+        val intent = InputChooserActivity.createIntent(this)
+        startActivity(intent)
+      }
+      "Stack" -> {
+        val intent = StackActivity.createIntent(this)
+        startActivity(intent)
+      }
+      "Dialog" -> {
+        val dialogFragment = AcceptDenyDialogFragment.Builder()
+            .setTitle("Title")
+            .setMessage("Hello, world.")
+            .setShowPositiveButton(true)
+            .setShowNegativeButton(true)
+            .build()
+        dialogFragment.show(fragmentManager, null)
+      }
+      "Settings" -> {
+        val intent = SettingsActivity.createIntent(this)
+        startActivity(intent)
+      }
+    }
+    Toast.makeText(this, navigationItems[pos].text, Toast.LENGTH_SHORT)
+        .show()
+  }
+
+  // MenuItem.OnMenuItemClickListener
+
+  override fun onMenuItemClick(item: MenuItem): Boolean {
+    when (item.itemId) {
+      R.id.action_photo -> {
+        val intent = PhotoActivity.createIntent(this)
+        startActivity(intent)
+      }
+      else -> Toast.makeText(this, item.title, Toast.LENGTH_SHORT).show()
+    }
+    bottomActionDrawer.controller.closeDrawer()
+    return true
+  }
 }
